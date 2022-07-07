@@ -65,7 +65,7 @@ TSharedRef<SDockTab> FMinesweeperPluginModule::SpawnMainTab(const FSpawnTabArgs&
 
 	MainTab = SNew(SDockTab)
 		.TabRole(ETabRole::NomadTab)
-		.Icon(FMinesweeperStyleSet::Get().GetBrush("Minesweeper.Icon16"))
+		.Icon(FMinesweeperStyleSet::Get().GetBrush(TEXT("Minesweeper.Icon16")))
 		.Label(LOCTEXT("MinesweeperMain", "Minesweeper"));
 
 
@@ -125,20 +125,20 @@ TSharedRef<SDockTab> FMinesweeperPluginModule::SpawnSettingsTab(const FSpawnTabA
 	check(Args.GetTabId() == SettingsTabId);
 
 	return SAssignNew(SettingsTab, SDockTab)
-		.Icon(FMinesweeperStyleSet::Get().GetBrush("Minesweeper.SettingsIcon"))
+		.Icon(FMinesweeperStyleSet::Get().GetBrush(TEXT("Minesweeper.SettingsIcon")))
 		.Label(LOCTEXT("MinesweeperSettings", "Settings"))
 		.TabRole(ETabRole::PanelTab)
 		[
 
 			SNew(SBorder)
-			.ColorAndOpacity(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.BorderColor").GetSpecifiedColor())
+			.ColorAndOpacity(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.BorderColor")).GetSpecifiedColor())
 			[
 				SNew(SOverlay)
 				+SOverlay::Slot()
 				[
 					SNew(SSimpleGradient)
-					.StartColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.MainColor1").GetSpecifiedColor())
-					.EndColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.MainColor1").GetSpecifiedColor())
+					.StartColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.MainColor1")).GetSpecifiedColor())
+					.EndColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.MainColor1")).GetSpecifiedColor())
 
 				]
 				+SOverlay::Slot()
@@ -146,7 +146,7 @@ TSharedRef<SDockTab> FMinesweeperPluginModule::SpawnSettingsTab(const FSpawnTabA
 					SNew(SVerticalBox)
 					+SVerticalBox::Slot()
 					.AutoHeight()
-					.Padding(FMinesweeperStyleSet::Get().GetMargin("Minesweeper.TabMargin"))
+					.Padding(FMinesweeperStyleSet::Get().GetMargin(TEXT("Minesweeper.TabMargin")))
 					[
 
 						SNew(SHorizontalBox)
@@ -156,7 +156,7 @@ TSharedRef<SDockTab> FMinesweeperPluginModule::SpawnSettingsTab(const FSpawnTabA
 
 							SNew(STextBlock)
 							.Text(FText::FromString(TEXT("Rows:")))
-							.ColorAndOpacity(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.HighlightColor"))
+							.ColorAndOpacity(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.HighlightColor")))
 
 						]
 						+SHorizontalBox::Slot()
@@ -165,8 +165,8 @@ TSharedRef<SDockTab> FMinesweeperPluginModule::SpawnSettingsTab(const FSpawnTabA
 							SAssignNew(RowsBox, SEditableTextBox)
 							.Text(FText::FromString(TEXT("3")))
 							.OnTextCommitted(FOnTextCommitted::CreateRaw(this, &FMinesweeperPluginModule::OnSizeChanged))
-							.BackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.EditColor"))
-							.ForegroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.TextColor"))
+							.BackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.EditColor")))
+							.ForegroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.TextColor")))
 
 						]
 						+SHorizontalBox::Slot()
@@ -175,7 +175,7 @@ TSharedRef<SDockTab> FMinesweeperPluginModule::SpawnSettingsTab(const FSpawnTabA
 						[
 
 							SNew(SSeparator)
-							.ColorAndOpacity(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.MainColor2"))
+							.ColorAndOpacity(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.MainColor2")))
 
 						]
 						+SHorizontalBox::Slot()
@@ -184,7 +184,7 @@ TSharedRef<SDockTab> FMinesweeperPluginModule::SpawnSettingsTab(const FSpawnTabA
 
 							SNew(STextBlock)
 							.Text(FText::FromString(TEXT("Columns:")))
-							.ColorAndOpacity(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.HighlightColor"))
+							.ColorAndOpacity(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.HighlightColor")))
 
 						]
 						+ SHorizontalBox::Slot()
@@ -193,17 +193,17 @@ TSharedRef<SDockTab> FMinesweeperPluginModule::SpawnSettingsTab(const FSpawnTabA
 							SAssignNew(ColumnsBox, SEditableTextBox)
 							.Text(FText::FromString(TEXT("3")))
 							.OnTextCommitted(FOnTextCommitted::CreateRaw(this, &FMinesweeperPluginModule::OnSizeChanged))
-							.BackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.EditColor"))
-							.ForegroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.TextColor"))
+							.BackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.EditColor")))
+							.ForegroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.TextColor")))
 						]
 					
 					]
 					+ SVerticalBox::Slot()
 					.AutoHeight()
-					.Padding(FMinesweeperStyleSet::Get().GetMargin("Minesweeper.TabMargin"))
+					.Padding(FMinesweeperStyleSet::Get().GetMargin(TEXT("Minesweeper.TabMargin")))
 					[
 						SNew(SBox)
-						.Padding(FMinesweeperStyleSet::Get().GetMargin("Minesweeper.TabMargin"))
+						.Padding(FMinesweeperStyleSet::Get().GetMargin(TEXT("Minesweeper.TabMargin")))
 						[
 							SNew(SHorizontalBox)
 							+ SHorizontalBox::Slot()
@@ -212,7 +212,7 @@ TSharedRef<SDockTab> FMinesweeperPluginModule::SpawnSettingsTab(const FSpawnTabA
 
 								SNew(STextBlock)
 								.Text(FText::FromString(TEXT("Mines:")))
-								.ColorAndOpacity(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.HighlightColor"))
+								.ColorAndOpacity(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.HighlightColor")))
 
 							]
 							+ SHorizontalBox::Slot()
@@ -221,8 +221,8 @@ TSharedRef<SDockTab> FMinesweeperPluginModule::SpawnSettingsTab(const FSpawnTabA
 								SAssignNew(MinesBox, SEditableTextBox)
 								.Text(FText::FromString(TEXT("1")))
 								.OnTextCommitted(FOnTextCommitted::CreateRaw(this, &FMinesweeperPluginModule::OnMinesChanged))
-								.BackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.EditColor"))
-								.ForegroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.TextColor"))
+								.BackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.EditColor")))
+								.ForegroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.TextColor")))
 
 						
 
@@ -232,29 +232,29 @@ TSharedRef<SDockTab> FMinesweeperPluginModule::SpawnSettingsTab(const FSpawnTabA
 					]
 					+ SVerticalBox::Slot()
 						.AutoHeight()
-						.Padding(FMinesweeperStyleSet::Get().GetMargin("Minesweeper.TabMargin"))
+						.Padding(FMinesweeperStyleSet::Get().GetMargin(TEXT("Minesweeper.TabMargin")))
 						[
 
 							SNew(SButton)
 							.Text(FText::FromString(TEXT("Generate Level")))
 							.HAlign(EHorizontalAlignment::HAlign_Center)
 							.OnClicked(FOnClicked::CreateRaw(this, &FMinesweeperPluginModule::OnGenerateLevel))
-							.ButtonColorAndOpacity(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.MainColor2"))
-							.ForegroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.HighlightColor"))
+							.ButtonColorAndOpacity(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.MainColor2")))
+							.ForegroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.HighlightColor")))
 						
 
 						]
 					+ SVerticalBox::Slot()
 						.VAlign(EVerticalAlignment::VAlign_Bottom)
-						.Padding(FMinesweeperStyleSet::Get().GetMargin("Minesweeper.TabMargin"))
+						.Padding(FMinesweeperStyleSet::Get().GetMargin(TEXT("Minesweeper.TabMargin")))
 						[
 							SNew(SBorder)
-							.BorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.MainColor2"))
+							.BorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.MainColor2")))
 							[
 								SAssignNew(LogBox, SEditableTextBox)
 								.Text(FText::FromString(Level->InstructionsMessage))
-								.BackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.MainColor2"))
-								.ReadOnlyForegroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.HighlightColor"))
+								.BackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.MainColor2")))
+								.ReadOnlyForegroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.HighlightColor")))
 								.IsReadOnly(true)
 
 							]
@@ -278,20 +278,20 @@ TSharedRef<SDockTab> FMinesweeperPluginModule::SpawnGameTab(const FSpawnTabArgs&
 
 
 	return SAssignNew(GameTab, SDockTab)
-		.Icon(FMinesweeperStyleSet::Get().GetBrush("Minesweeper.GameIcon"))
+		.Icon(FMinesweeperStyleSet::Get().GetBrush(TEXT("Minesweeper.GameIcon")))
 		.Label(LOCTEXT("MinesweeperGame", "Game"))
 		.TabRole(ETabRole::PanelTab)
 		[
 
 			SNew(SBorder)
-			.BorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.BorderColor"))
+			.BorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.BorderColor")))
 			[
 				SNew(SOverlay)
 				+SOverlay::Slot()
 				[
 					SNew(SSimpleGradient)
-					.StartColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.MainColor2").GetSpecifiedColor())
-					.EndColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.MainColor2").GetSpecifiedColor())
+					.StartColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.MainColor2")).GetSpecifiedColor())
+					.EndColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.MainColor2")).GetSpecifiedColor())
 
 				]
 				+SOverlay::Slot()
@@ -299,7 +299,7 @@ TSharedRef<SDockTab> FMinesweeperPluginModule::SpawnGameTab(const FSpawnTabArgs&
 				.VAlign(EVerticalAlignment::VAlign_Center)
 				[
 					SNew(SBorder)
-					.BorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.BorderColor"))
+					.BorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.BorderColor")))
 					[
 
 						SAssignNew(GameBox, SWrapBox)

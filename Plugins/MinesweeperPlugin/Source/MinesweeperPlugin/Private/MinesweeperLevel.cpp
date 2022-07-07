@@ -94,7 +94,7 @@ void FMinesweeperLevel::ResetLevel(TSharedRef<SWrapBox> InGameBox, const int32 I
 
 						SAssignNew(SlotButtons[It], SMinesweeperButton)
 						.OnClicked(FOnClicked::CreateLambda(OnClickedLambda))
-						.ButtonColorAndOpacity(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.ButtonColor"))
+						.ButtonColorAndOpacity(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.ButtonColor")))
 
 
 					]
@@ -134,7 +134,7 @@ void FMinesweeperLevel::ResetButtons()
 	for (TSharedPtr<SMinesweeperButton> Button : SlotButtons)
 	{
 		Button->SetEnabled(true);
-		Button->SetBorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.ButtonColor"));
+		Button->SetBorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.ButtonColor")));
 		Button->HasMine = false;
 		Button->AdjacentMinesCounter = 0;
 
@@ -258,7 +258,7 @@ void FMinesweeperLevel::ClickButton(TSharedPtr<SMinesweeperButton> InButton, con
 						if (Index < Size)
 						{
 
-							SlotButtons[Index]->SetBorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.WinMineColor"));
+							SlotButtons[Index]->SetBorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.WinMineColor")));
 							SlotButtons[Index]->EnableImage(true);
 
 						}
@@ -281,7 +281,7 @@ void FMinesweeperLevel::MineButtonClicked(TSharedPtr<SMinesweeperButton> InButto
 {
 	int32 Size = GetLevelSize();
 
-	InButton->SetBorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.HasMineColor"));
+	InButton->SetBorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.HasMineColor")));
 	InButton->EnableImage(true);
 
 	for (int32 Index : MinesIndexes)
@@ -291,7 +291,7 @@ void FMinesweeperLevel::MineButtonClicked(TSharedPtr<SMinesweeperButton> InButto
 
 			if (Index < Size)
 			{
-				SlotButtons[Index]->SetBorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.HasMineColor"));
+				SlotButtons[Index]->SetBorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.HasMineColor")));
 				SlotButtons[Index]->EnableImage(true);
 
 			}
@@ -310,7 +310,6 @@ void FMinesweeperLevel::FreeButtonClicked(TSharedPtr<SMinesweeperButton> InButto
 {
 
 	InButton->SetEnabled(false);
-	InButton->SetBorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor("Minesweeper.DisabledColor"));
 
 	if (InButton->AdjacentMinesCounter > 0)
 	{
@@ -320,13 +319,17 @@ void FMinesweeperLevel::FreeButtonClicked(TSharedPtr<SMinesweeperButton> InButto
 
 
 		FString ColorString = TEXT("Minesweeper.MineColor_") + Msg;
-		InButton->SetForegroundColor(FMinesweeperStyleSet::Get().GetSlateColor(*ColorString));
+		InButton->SetForegroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.DisabledColor")));
+		InButton->SetBorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor(*ColorString));
+
 
 	}
 	else
 	{
 
 
+		InButton->SetBorderBackgroundColor(FMinesweeperStyleSet::Get().GetSlateColor(TEXT("Minesweeper.DisabledColor")));
+		
 		int32 Row = InIndex / GridCols;
 		int32 Col = InIndex % GridCols;
 
